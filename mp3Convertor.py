@@ -47,7 +47,10 @@ class App:
         self.pb.pack(side="left", pady=5, padx=5)
 
         export_filename = self.file_whole.get() + "/" + os.path.basename(self.file_name.get())[:-4] + ".mp3"
-        convert_process = sp.Popen(["/usr/bin/lame", "-b 16k", self.file_name.get(), export_filename])
+        # The following execubale path is specifically for a Linux OS:
+        # convert_process = sp.Popen(["/usr/bin/lame", "-b 16k", self.file_name.get(), export_filename])
+        # The following execubale path is specifically for a Windows OS:
+        convert_process = sp.Popen(["C:\Program Files (x86)\Lame For Audacity\lame.exe", "-b 16k", self.file_name.get(), export_filename])
         self.pb.start()
     
         def poller():
