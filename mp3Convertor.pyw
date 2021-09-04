@@ -51,6 +51,7 @@ class App:
         # convert_process = sp.Popen(["/usr/bin/lame", "-b 16k", self.file_name.get(), export_filename])
         # The following execubale path is specifically for a Windows OS:
         convert_process = sp.Popen(["C:\Program Files (x86)\Lame For Audacity\lame.exe", "-b 32k", self.file_name.get(), export_filename])
+        convert_process.communicate(timeout=15)
         self.pb.start()
     
         def poller():
@@ -73,7 +74,7 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = App(root)
     root.title("Sermon Convertor")
-    root.iconphoto(True, tk.PhotoImage(file="icon-convert.png"))
+    root.iconphoto(True, tk.PhotoImage(file="convert.png"))
     root.resizable(True, True)
 
     # Gets the requested values of the height and widht.
